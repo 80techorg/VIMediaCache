@@ -66,7 +66,9 @@ NSString * const MCResourceLoaderErrorDomain = @"LSFilePlayerResourceLoaderError
     }];
     if (requestWorker) {
         [requestWorker finish];
-        [self.pendingRequestWorkers removeObject:requestWorker];
+        if (self.pendingRequestWorkers.count > 0) {
+            [self.pendingRequestWorkers removeObject:requestWorker];
+        }
     }
 }
 
